@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 public class RentalDTO {
 
     private Long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
     private Float priceAnnual;
     private Float deposit;
     private String contactPerson;
     private Long house;
     private List<String> users;
 
-    public RentalDTO(LocalDate startDate, LocalDate endDate, Float priceAnnual, Float deposit, String contactPerson, Long house) {
+    public RentalDTO(String startDate, String endDate, Float priceAnnual, Float deposit, String contactPerson, Long house) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.priceAnnual = priceAnnual;
@@ -51,19 +51,19 @@ public class RentalDTO {
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

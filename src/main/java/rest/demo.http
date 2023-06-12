@@ -75,6 +75,20 @@ Content-Type: application/json
 DELETE http://localhost:8080/rental_web_app/api/rental/delete/2
 Content-Type: application/json
 
+###
+
+POST http://localhost:8080/rental_web_app/api/rental/create
+Content-Type: application/json
+
+{
+  "startDate": "2023-07-01",
+  "endDate": "2023-07-08",
+  "priceAnnual": 1000,
+  "deposit": 20,
+  "contactPerson": "Morten",
+  "house": 1
+}
+
 
 
 

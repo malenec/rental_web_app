@@ -92,24 +92,24 @@ public class RentalResourceTest {
         h1.setNumberOfRooms(3L);
 
         r1 = new Rental();
-        r1.setStartDate(LocalDate.parse("2023-07-01"));
-        r1.setEndDate(LocalDate.parse("2023-07-14"));
+        r1.setStartDate("2023-07-01");
+        r1.setEndDate("2023-07-14");
         r1.setPriceAnnual(1000L);
         r1.setDeposit(1000L);
         r1.setContactPerson("Test Testesen");
         r1.setHouse(h1);
 
         r2 = new Rental();
-        r2.setStartDate(LocalDate.parse("2023-07-14"));
-        r2.setEndDate(LocalDate.parse("2023-07-21"));
+        r2.setStartDate("2023-07-14");
+        r2.setEndDate("2023-07-21");
         r2.setPriceAnnual(1000L);
         r2.setDeposit(1000L);
         r2.setContactPerson("Test Testesen");
         r2.setHouse(h1);
 
         r3 = new Rental();
-        r3.setStartDate(LocalDate.parse("2023-07-21"));
-        r3.setEndDate(LocalDate.parse("2023-07-28"));
+        r3.setStartDate("2023-07-21");
+        r3.setEndDate("2023-07-28");
         r3.setPriceAnnual(1000L);
         r3.setDeposit(1000L);
         r3.setContactPerson("Test Testesen");

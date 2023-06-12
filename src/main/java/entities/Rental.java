@@ -21,10 +21,10 @@ public class Rental{
     private Long id;
 
     @Column(name = "startDate")
-    private LocalDate startDate;
+    private String startDate;
 
     @Column(name = "endDate")
-    private LocalDate endDate;
+    private String endDate;
 
     @Column(name = "priceAnnual")
     private Float priceAnnual;
@@ -54,19 +54,19 @@ public class Rental{
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
