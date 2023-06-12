@@ -1,0 +1,114 @@
+POST http://localhost:8080/trip_planner/api/guide/create
+Content-Type: application/json
+
+{
+  "guideName": "Andrea",
+  "gender": "female",
+  "birthYear": "1993",
+  "profile": "I love to guide",
+  "imageUrl": "https://www.google.com"
+}
+
+###
+
+GET http://localhost:8080/trip_planner/api/trip/all
+
+###
+
+POST http://localhost:8080/trip_planner/api/trip/create
+Content-Type: application/json
+
+{
+  "tripName": "Eiffel Tower",
+  "date": "2021-07-01",
+  "time": "09:00",
+  "location": "Paris",
+  "duration": "3 hours",
+  "packingList": "Baguette, Brie, Wine",
+    "guide": "Andrea"
+}
+
+###
+
+POST http://localhost:8080/trip_planner/api/trip/assign/hugo
+Content-Type: application/json
+
+{
+  "tripName": "Frihedsgudinden"
+}
+
+###
+
+POST http://localhost:8080/trip_planner/api/trip/remove/hugo
+Content-Type: application/json
+
+{
+  "tripName": "Frihedsgudinden"
+}
+
+###
+
+PUT http://localhost:8080/trip_planner/api/trip/update
+Content-Type: application/json
+
+{
+  "tripName": "Frihedsgudinden",
+  "date": "2023-08-03",
+  "time": "16:00",
+  "location": "New York",
+  "duration": "1 hour",
+  "packingList": "Solbriller, kaffe, kikkert",
+    "guide": "Kit"
+}
+
+###
+
+DELETE http://localhost:8080/trip_planner/api/trip/delete/Historisk%20vandring
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/trip_planner/api/trip/update
+Content-Type: application/json
+
+{
+  "tripName": "Bjergbestigning",
+  "date": "2023-06-24",
+  "time": "10:00",
+  "location": "Machu Picchu",
+  "duration": "2 timer",
+  "packingList": "Vandrestøvler, Sovepose, Lommelygte",
+  "guide": "Elva"
+}
+
+###
+
+POST http://localhost:8080/trip_planner/api/trip/create
+Content-Type: application/json
+
+{
+  "tripName": "Frihedsgudinden",
+  "date": "2023-06-24",
+  "time": "10:00",
+  "location": "Machu Picchu",
+  "duration": "2 timer",
+  "packingList": "Vandrestøvler, Sovepose, Lommelygte",
+  "guide": "Elva"
+}
+
+###
+
+POST http://localhost:8080/trip_planner/api/guide/create
+Content-Type: application/json
+
+{
+  "guideName": "Oda",
+  "gender": "Kvinde",
+  "birthYear": "1983",
+  "profile": "Guide for life",
+  "imageUrl": "https://www.google.com"
+}
+
+
+
+
