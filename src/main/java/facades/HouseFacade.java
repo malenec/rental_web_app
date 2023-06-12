@@ -1,14 +1,11 @@
 package facades;
 
 import dtos.HouseDTO;
-import dtos.RentalDTO;
 import entities.House;
-import entities.Rental;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class HouseFacade {
@@ -16,14 +13,9 @@ public class HouseFacade {
     private static HouseFacade instance;
     private static EntityManagerFactory emf;
 
-    //Private Constructor to ensure Singleton
     private HouseFacade() {
     }
 
-    /**
-     * @param _emf
-     * @return an instance of this facade class.
-     */
     public static HouseFacade getHouseFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -71,13 +63,8 @@ public class HouseFacade {
         emf = EMF_Creator.createEntityManagerFactory();
         HouseFacade hf = getHouseFacade(emf);
 
-//        HouseDTO guideDTO1 = new HouseDTO("Elva", "Female", 1990, "I am a guide", "www.google.com");
-//        gf.createGuide(guideDTO1);
-
-//        HouseDTO houseDTO2 = new HouseDTO("Kit", "Female", 1970, "I am also a guide", "www.facebook.com");
-//        gf.createGuide(houseDTO2);
+        hf.getAllHouses().forEach(dto->System.out.println(dto));
 
     }
-
 
 }

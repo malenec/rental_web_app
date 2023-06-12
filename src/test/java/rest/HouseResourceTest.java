@@ -1,9 +1,7 @@
 package rest;
 
 import dtos.HouseDTO;
-import dtos.UserDTO;
 import entities.House;
-import entities.Rental;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import org.glassfish.grizzly.http.server.HttpServer;

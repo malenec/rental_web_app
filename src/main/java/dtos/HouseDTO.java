@@ -2,7 +2,6 @@ package dtos;
 
 import entities.House;
 
-import javax.persistence.Column;
 import java.util.List;
 import java.util.stream.Collectors;
 

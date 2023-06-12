@@ -1,18 +1,15 @@
 package facades;
 
-import dtos.RentalDTO;
 import dtos.UserDTO;
-import entities.Rental;
 import entities.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import security.errorhandling.AuthenticationException;
+import utils.EMF_Creator;
 
 import java.util.List;
 
-/**
- * @author lam@cphbusiness.dk
- */
+
 public class UserFacade {
 
     private static EntityManagerFactory emf;
@@ -21,11 +18,7 @@ public class UserFacade {
     private UserFacade() {
     }
 
-    /**
-     *
-     * @param _emf
-     * @return the instance of this facade.
-     */
+
     public static UserFacade getUserFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -56,5 +49,11 @@ public class UserFacade {
         } finally {
             em.close();
         }
+    }
+
+    public static void main(String[] args) {
+        emf = EMF_Creator.createEntityManagerFactory();
+        UserFacade uf = UserFacade.getUserFacade(emf);
+        uf.getAllUsers().forEach(dto->System.out.println(dto));
     }
 }

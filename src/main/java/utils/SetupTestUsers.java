@@ -46,19 +46,19 @@ public class SetupTestUsers {
 //    System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
 //    System.out.println("Created TEST Users");
 //    System.out.println("Testing user with OK password: " + user.verifyPassword("test123"));
-
+//
 //    User sofie = new User("sofie", "test123");
 //    User caroline = new User("caroline", "test123");
 //    User marius = new User("marius", "test123");
 //    User hugo = new User("hugo", "test123");
-
+//
 //    if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
 //      throw new UnsupportedOperationException("You have not changed the passwords");
-
+//
 //    em.getTransaction().begin();
 //
 //    Role userRole = em.find(Role.class, "user");
-//
+
 //    sofie.addRole(userRole);
 //    caroline.addRole(userRole);
 //    marius.addRole(userRole);
@@ -83,29 +83,22 @@ public class SetupTestUsers {
 //        User marius = em.find(User.class, "marius");
 //        User hugo = em.find(User.class, "hugo");
 //
-//        sofie.setAddress("Sofievej 1, 2400 København NV");
-//        sofie.setBirthYear(1995);
-//        sofie.setEmail("sofie@gmail.com");
-//        sofie.setGender("Kvinde");
-//        sofie.setPhone("12345678");
+//        sofie.setName("Sofie Marie Magnussen");
+//        sofie.setPhone(12345678L);
+//        sofie.setJob("Lærer");
 //
-//        caroline.setAddress("Carolinevej 1, 2800 Kongens Lyngby");
-//        caroline.setBirthYear(1975);
-//        caroline.setEmail("caroline@gmail.com");
-//        caroline.setGender("Kvinde");
-//        caroline.setPhone("87654321");
+//        caroline.setName("Caroline Markus");
+//        caroline.setPhone(87654321L);
+//        caroline.setJob("Studerende");
 //
-//        marius.setAddress("Mariusvej 1, 2000 Frederiksberg C");
-//        marius.setBirthYear(1990);
-//        marius.setEmail("marius@gmail.com");
-//        marius.setGender("Mand");
-//        marius.setPhone("12348765");
+//        marius.setName("Marius Hansen");
+//        marius.setPhone(12345678L);
+//        marius.setJob("Designer");
 //
-//        hugo.setAddress("Hugovej 1, 2100 København Ø");
-//        hugo.setBirthYear(1982);
-//        hugo.setEmail("hugo@gmail.com");
-//        hugo.setGender("Mand");
-//        hugo.setPhone("87651234");
+//        hugo.setName("Hugo Andrew");
+//        hugo.setPhone(87654321L);
+//        hugo.setJob("Musiker");
+//
 //
 //        em.merge(sofie);
 //        em.merge(caroline);

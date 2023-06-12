@@ -93,6 +93,23 @@ Content-Type: application/json
 
 GET http://localhost:8080/rental_web_app/api/user/all
 
+###
+
+PUT http://localhost:8080/rental_web_app/api/rental/update
+Content-Type: application/json
+
+{
+  "id": 3,
+  "startDate": "2024-07-01",
+  "endDate": "2024-07-08",
+  "priceAnnual": 1000,
+  "deposit": 20,
+  "contactPerson": "Bastian",
+  "house": 1
+}
+
+###
+
 
 
 

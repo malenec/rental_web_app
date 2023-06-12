@@ -10,7 +10,6 @@ import utils.EMF_Creator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class RentalFacade {
@@ -18,14 +17,10 @@ public class RentalFacade {
     private static RentalFacade instance;
     private static EntityManagerFactory emf;
 
-    //Private Constructor to ensure Singleton
+
     private RentalFacade() {}
 
-    /**
-     *
-     * @param _emf
-     * @return an instance of this facade class.
-     */
+
     public static RentalFacade getRentalFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -168,12 +163,6 @@ public class RentalFacade {
         RentalFacade rf = getRentalFacade(emf);
 
         rf.getAllRentals().forEach(dto->System.out.println(dto));
-
-//        RentalDTO tripDTO1 = new RentalDTO("Bjergbestigning", "2023-06-24", "12:00", "Machu Picchu", "2 timer", "Vandrestøvler, Sovepose, Lommelygte", "Maria");
-//        gf.createTrip(tripDTO1);
-
-//        RentalDTO tripDTO2 = new RentalDTO("Historisk vandring", "2023-06-27", "14:00", "Pisa", "4 timer", "Solcreme, Solhat, Vand", "Kit");
-//        gf.createTrip(tripDTO2);
 
     }
 

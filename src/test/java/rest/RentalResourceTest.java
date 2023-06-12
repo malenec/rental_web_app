@@ -177,34 +177,4 @@ public class RentalResourceTest {
                 .body("rentalDTOListList[0].users[0]", equalTo("user"));
     }
 
-
-
-
-
-//@Test
-//public void removeUserFromRental() {
-//
-//    given()
-//            .contentType("application/json")
-//            .post("/rental/assign/user/" + r1.getId().intValue())
-//            .then()
-//            .assertThat()
-//            .statusCode(HttpStatus.OK_200.getStatusCode())
-//            .body("username", equalTo("user"))
-//            .body("rentalDTOListList[0].id", equalTo(r1.getId().intValue()))
-//            .body("rentalDTOListList[0].users[0]", equalTo("user"));
-//
-//
-//    given()
-//            .contentType("application/json")
-//            .delete("/rental/remove/user/" + r1.getId().intValue())
-//            .then()
-//            .assertThat()
-//            .statusCode(HttpStatus.OK_200.getStatusCode())
-//            .body("rentalDTOListList", empty());
-//}
-
-
-
-
 }

@@ -2,8 +2,6 @@ package dtos;
 
 import entities.Rental;
 
-import javax.persistence.Column;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
