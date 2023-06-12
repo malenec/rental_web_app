@@ -1,113 +1,82 @@
-POST http://localhost:8080/trip_planner/api/guide/create
+POST http://localhost:8080/rental_web_app/api/house/create
 Content-Type: application/json
 
 {
-  "guideName": "Andrea",
-  "gender": "female",
-  "birthYear": "1993",
-  "profile": "I love to guide",
-  "imageUrl": "https://www.google.com"
+  "address": "Havnegade 1",
+  "city": "København",
+  "numberOfRooms": "5"
 }
 
 ###
 
-GET http://localhost:8080/trip_planner/api/trip/all
+GET http://localhost:8080/rental_web_app/api/house/all
 
 ###
 
-POST http://localhost:8080/trip_planner/api/trip/create
+POST http://localhost:8080/rental_web_app/api/rental/create
 Content-Type: application/json
 
 {
-  "tripName": "Eiffel Tower",
-  "date": "2021-07-01",
-  "time": "09:00",
-  "location": "Paris",
-  "duration": "3 hours",
-  "packingList": "Baguette, Brie, Wine",
-    "guide": "Andrea"
+  "startDate": {
+    "year": 2023,
+    "month": 7,
+    "day": 1
+  },
+  "endDate": {
+    "year": 2023,
+    "month": 7,
+    "day": 8
+  },
+  "priceAnnual": 1000,
+  "deposit": 20,
+  "contactPerson": "Oda",
+  "house": 1
 }
 
 ###
 
-POST http://localhost:8080/trip_planner/api/trip/assign/hugo
-Content-Type: application/json
-
-{
-  "tripName": "Frihedsgudinden"
-}
+GET http://localhost:8080/rental_web_app/api/rental/all
 
 ###
 
-POST http://localhost:8080/trip_planner/api/trip/remove/hugo
-Content-Type: application/json
-
-{
-  "tripName": "Frihedsgudinden"
-}
-
-###
-
-PUT http://localhost:8080/trip_planner/api/trip/update
-Content-Type: application/json
-
-{
-  "tripName": "Frihedsgudinden",
-  "date": "2023-08-03",
-  "time": "16:00",
-  "location": "New York",
-  "duration": "1 hour",
-  "packingList": "Solbriller, kaffe, kikkert",
-    "guide": "Kit"
-}
-
-###
-
-DELETE http://localhost:8080/trip_planner/api/trip/delete/Historisk%20vandring
+POST http://localhost:8080/rental_web_app/api/rental/assign/user/1
 Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/trip_planner/api/trip/update
+POST http://localhost:8080/rental_web_app/api/rental/remove/user/1
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/rental_web_app/api/rental/update
 Content-Type: application/json
 
 {
-  "tripName": "Bjergbestigning",
-  "date": "2023-06-24",
-  "time": "10:00",
-  "location": "Machu Picchu",
-  "duration": "2 timer",
-  "packingList": "Vandrestøvler, Sovepose, Lommelygte",
-  "guide": "Elva"
+  "id": 3,
+  "startDate": {
+    "year": 2024,
+    "month": 7,
+    "day": 1
+  },
+  "endDate": {
+    "year": 2024,
+    "month": 7,
+    "day": 8
+  },
+  "priceAnnual": 1000,
+  "deposit": 20,
+  "contactPerson": "Bastian",
+  "house": 1
 }
 
 ###
 
-POST http://localhost:8080/trip_planner/api/trip/create
+DELETE http://localhost:8080/rental_web_app/api/rental/delete/2
 Content-Type: application/json
 
-{
-  "tripName": "Frihedsgudinden",
-  "date": "2023-06-24",
-  "time": "10:00",
-  "location": "Machu Picchu",
-  "duration": "2 timer",
-  "packingList": "Vandrestøvler, Sovepose, Lommelygte",
-  "guide": "Elva"
-}
 
-###
 
-POST http://localhost:8080/trip_planner/api/guide/create
-Content-Type: application/json
-
-{
-  "guideName": "Oda",
-  "gender": "Kvinde",
-  "birthYear": "1983",
-  "profile": "Guide for life",
-  "imageUrl": "https://www.google.com"
-}
 
 
 

@@ -8,23 +8,20 @@ import java.util.stream.Collectors;
 
 public class UserDTO {
     private String username;
-    private String address;
-    private String phone;
-    private String email;
-    private int birthYear;
-    private String gender;
 
-    private List<TripDTO> tripList;
+    private String name;
+    private Long phone;
+    private String job;
+
+    private List<RentalDTO> rentalDTOListList;
 
     public UserDTO(User u){
         this.username = u.getUserName();
-        this.address = u.getAddress();
+        this.name = u.getName();
         this.phone = u.getPhone();
-        this.email = u.getEmail();
-        this.birthYear = u.getBirthYear();
-        this.gender = u.getGender();
-        if(u.getTripList() != null)
-            this.tripList = u.getTripList().stream().map(t -> new TripDTO(t)).collect(Collectors.toList());
+        this.job = u.getJob();
+        if(u.getRentalList() != null)
+            this.rentalDTOListList = u.getRentalList().stream().map(t -> new RentalDTO(t)).collect(Collectors.toList());
     }
 
     public static List<UserDTO> getDtos(List<User> users){
@@ -40,64 +37,47 @@ public class UserDTO {
         this.username = username;
     }
 
-    public String getAddress() {
-        return address;
+
+    public String getName() {
+        return name;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getJob() {
+        return job;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setJob(String job) {
+        this.job = job;
     }
 
-    public int getBirthYear() {
-        return birthYear;
+    public List<RentalDTO> getRentalDTOListList() {
+        return rentalDTOListList;
     }
 
-    public void setBirthYear(int birthYear) {
-        this.birthYear = birthYear;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public List<TripDTO> getTripList() {
-        return tripList;
-    }
-
-    public void setTripList(List<TripDTO> tripList) {
-        this.tripList = tripList;
+    public void setRentalDTOListList(List<RentalDTO> rentalDTOListList) {
+        this.rentalDTOListList = rentalDTOListList;
     }
 
     @Override
     public String toString() {
         return "UserDTO{" +
                 "username='" + username + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", birthYear=" + birthYear +
-                ", gender='" + gender + '\'' +
-                ", tripList=" + tripList +
+                ", name='" + name + '\'' +
+                ", phone=" + phone +
+                ", job='" + job + '\'' +
+                ", rentalDTOListList=" + rentalDTOListList +
                 '}';
     }
 }

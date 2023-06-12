@@ -13,7 +13,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 @NamedQueries({
         @NamedQuery(name = "User.deleteAllRows", query = "DELETE from User"),
-//        @NamedQuery(name = "User.getAllGroceryListsByUsername", query = "SELECT g FROM GroceryList g WHERE g.user.userName = :username"),
+        @NamedQuery(name = "User.getAllUsers", query = "SELECT u FROM User u"),
         @NamedQuery(name = "User.getUserByUsername", query = "select u from User u WHERE u.userName = :username")
 })
 
@@ -32,20 +32,14 @@ public class User implements Serializable {
     @Column(name = "user_pass")
     private String userPass;
 
-    @Column(name = "email", length = 50)
-    private String email;
+    @Column(name = "name", length = 255)
+    private String name;
 
     @Column(name = "phone", length = 15)
-    private String phone;
+    private Long phone;
 
-    @Column(name = "address", length = 50)
-    private String address;
-
-    @Column(name = "birth_year", length = 4)
-    private int birthYear;
-
-    @Column(name = "gender", length = 10)
-    private String gender;
+    @Column(name = "job", length = 255)
+    private String job;
 
     @JoinTable(name = "user_role", joinColumns = {
             @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
@@ -53,11 +47,11 @@ public class User implements Serializable {
     @ManyToMany
     private List<Role> roleList = new ArrayList<>();
 
-    @JoinTable(name = "user_trip", joinColumns = {
+    @JoinTable(name = "user_rental", joinColumns = {
             @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
-            @JoinColumn(name = "trip_name", referencedColumnName = "trip_name")})
+            @JoinColumn(name = "rental_id", referencedColumnName = "rental_id")})
     @ManyToMany
-    private List<Trip> tripList = new ArrayList<>();
+    private List<Rental> rentalList = new ArrayList<>();
 
 
     public List<String> getRolesAsStrings() {
@@ -113,58 +107,42 @@ public class User implements Serializable {
         roleList.add(userRole);
     }
 
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getJob() {
+        return job;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setJob(String job) {
+        this.job = job;
     }
 
-    public int getBirthYear() {
-        return birthYear;
+    public List<Rental> getRentalList() {
+        return rentalList;
     }
 
-    public void setBirthYear(int birthYear) {
-        this.birthYear = birthYear;
+    public void addRental(Rental rental) {
+        rentalList.add(rental);
+        rental.addUserToList(this);
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public List<Trip> getTripList() {
-        return tripList;
-    }
-
-    public void addTrip(Trip trip) {
-        tripList.add(trip);
-        trip.addUserToList(this);
-    }
-
-    public void removeTrip(Trip trip) {
-        tripList.remove(trip);
-        trip.removeUserFromList(this);
+    public void removeRental(Rental rental) {
+        rentalList.remove(rental);
+        rental.removeUserFromList(this);
     }
 
     @Override
@@ -172,13 +150,11 @@ public class User implements Serializable {
         return "User{" +
                 "userName='" + userName + '\'' +
                 ", userPass='" + userPass + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", birthYear=" + birthYear +
-                ", gender='" + gender + '\'' +
+                ", name='" + name + '\'' +
+                ", phone=" + phone +
+                ", job='" + job + '\'' +
                 ", roleList=" + roleList +
-                ", tripList=" + tripList +
+                ", rentalList=" + rentalList +
                 '}';
     }
 
