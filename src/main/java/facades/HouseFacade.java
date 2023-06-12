@@ -24,7 +24,7 @@ public class HouseFacade {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static HouseFacade getGuideFacade(EntityManagerFactory _emf) {
+    public static HouseFacade getHouseFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
             instance = new HouseFacade();
@@ -69,7 +69,7 @@ public class HouseFacade {
 
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
-        HouseFacade gf = getGuideFacade(emf);
+        HouseFacade hf = getHouseFacade(emf);
 
 //        HouseDTO guideDTO1 = new HouseDTO("Elva", "Female", 1990, "I am a guide", "www.google.com");
 //        gf.createGuide(guideDTO1);

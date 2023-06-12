@@ -89,6 +89,10 @@ Content-Type: application/json
   "house": 1
 }
 
+###
+
+GET http://localhost:8080/rental_web_app/api/user/all
+
 
 
 
