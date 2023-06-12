@@ -56,7 +56,6 @@ public class RentalFacade {
             em.getTransaction().begin();
             em.persist(rental);
             em.getTransaction().commit();
-
         } finally {
             em.close();
         }

@@ -1,7 +1,6 @@
 package rest;
 
 import dtos.RentalDTO;
-import dtos.UserDTO;
 import entities.House;
 import entities.Rental;
 import entities.User;
@@ -21,10 +20,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
-import java.time.LocalDate;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 
 public class RentalResourceTest {
@@ -40,7 +37,6 @@ public class RentalResourceTest {
     House h1;
 
     Rental r1, r2, r3;
-    private static UserDTO userDTO1;
 
     static HttpServer startServer() {
         ResourceConfig rc = ResourceConfig.forApplication(new ApplicationConfig());
@@ -49,12 +45,12 @@ public class RentalResourceTest {
 
     @BeforeAll
     public static void setUpClass() {
-        //This method must be called before you request the EntityManagerFactory
+
         EMF_Creator.startREST_TestWithDB();
         emf = EMF_Creator.createEntityManagerFactoryForTest();
 
         httpServer = startServer();
-        //Setup RestAssured
+
         RestAssured.baseURI = SERVER_URL;
         RestAssured.port = SERVER_PORT;
         RestAssured.defaultParser = Parser.JSON;
@@ -75,7 +71,6 @@ public class RentalResourceTest {
             em.close();
         }
 
-        //Don't forget this, if you called its counterpart in @BeforeAll
         EMF_Creator.endREST_TestWithDB();
         httpServer.shutdownNow();
     }
@@ -134,7 +129,7 @@ public class RentalResourceTest {
         } finally {
             em.close();
         }
-        userDTO1 = new UserDTO(user1);
+
     }
 
     @Test
@@ -149,45 +144,24 @@ public class RentalResourceTest {
     }
 
 
-//    @Test
-//    public void createRental() {
-//        RentalDTO rentalDTO = new RentalDTO(LocalDate.parse("2023-07-01"), LocalDate.parse("2023-07-08"), 1000.0F, 20.0F, "Oda", 1L);
-//
-//        given()
-//                .contentType("application/json")
-//                .body(rentalDTO)
-//                .when()
-//                .post("/rental/create")
-//                .then()
-//                .statusCode(200)
-//                .body("priceAnnual", equalTo(rentalDTO.getPriceAnnual()))
-//                .body("deposit", equalTo(rentalDTO.getDeposit()))
-//                .body("contactPerson", equalTo(rentalDTO.getContactPerson()))
-//                .body("house", equalTo(rentalDTO.getHouse()));
-//    }
+    @Test
+    public void createRental() {
+        RentalDTO rentalDTO = new RentalDTO("2023-07-01", "2023-07-08", 1000.0F, 20.0F, "Oda", h1.getId());
 
-
-
-//    @Test
-//    public void createRental() {
-//        RentalDTO rentalDTO = new RentalDTO(LocalDate.parse("2023-08-21"), LocalDate.parse("2023-08-28"), 2000.0F, 200.0F, "Test Testesen", 1L);
-//
-//        given()
-//                .contentType("application/json")
-//                .body(rentalDTO)
-//                .when()
-//                .post("/rental/create")
-//                .then()
-//                .statusCode(200)
-//                .body("startDate", equalTo(rentalDTO.getStartDate().toString()))
-//                .body("endDate", equalTo(rentalDTO.getEndDate().toString()))
-//                .body("priceAnnual", equalTo(rentalDTO.getPriceAnnual()))
-//                .body("deposit", equalTo(rentalDTO.getDeposit()))
-//                .body("contactPerson", equalTo(rentalDTO.getContactPerson()))
-//                .body("house", equalTo(rentalDTO.getHouse()));
-//    }
-
-
+        given()
+                .contentType("application/json")
+                .body(rentalDTO)
+                .when()
+                .post("/rental/create")
+                .then()
+                .statusCode(200)
+                .body("startDate", equalTo(rentalDTO.getStartDate()))
+                .body("endDate", equalTo(rentalDTO.getEndDate()))
+                .body("priceAnnual", equalTo(rentalDTO.getPriceAnnual()))
+                .body("deposit", equalTo(rentalDTO.getDeposit()))
+                .body("contactPerson", equalTo(rentalDTO.getContactPerson()))
+                .body("house", equalTo(rentalDTO.getHouse().intValue()));
+    }
 
 
     @Test
@@ -205,23 +179,14 @@ public class RentalResourceTest {
 
 
 
-//        // Add rental to user
-//        given()
-//                .contentType("application/json")
-//                .post("/rental/assign/user/1")
-//                .then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("username", equalTo("user"))
-//                .body("rentalDTOListList[0].id", equalTo(1))
-//                .body("rentalDTOListList[0].users[0]", equalTo("user"));
-//
+
+
 //@Test
 //public void removeUserFromRental() {
 //
 //    given()
 //            .contentType("application/json")
-//            .post("/rental/assign/user/" + r1.getId())
+//            .post("/rental/assign/user/" + r1.getId().intValue())
 //            .then()
 //            .assertThat()
 //            .statusCode(HttpStatus.OK_200.getStatusCode())
@@ -232,7 +197,7 @@ public class RentalResourceTest {
 //
 //    given()
 //            .contentType("application/json")
-//            .delete("/rental/remove/user/" + r1.getId())
+//            .delete("/rental/remove/user/" + r1.getId().intValue())
 //            .then()
 //            .assertThat()
 //            .statusCode(HttpStatus.OK_200.getStatusCode())
